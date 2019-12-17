@@ -156,8 +156,8 @@ function getCarInfoByIndex(inventory, index) {
  * it will return `This is a Lincoln Town Car`.
  */
 function getLastCarInfo(inventory) {
-  const lastCar = inventory.pop().slice(-1);
-  console.log(lastCar[0].car_make);
+  const lastCar = inventory.slice(-1);
+
   return `This is a ${lastCar[0].car_make} ${lastCar[0].car_model}`;
 }
 
@@ -247,7 +247,7 @@ function getGermanCars(dataset) {
   const germanMakes = ["Audi", "Mercedes-Benz", "Volkswagen", "BMW"];
   const germanCars = [];
   for (let i = 0; i < dataset.length; i++) {
-    currentObj = dataset[i];
+    const currentObj = dataset[i];
     if (germanMakes.includes(currentObj.car_make)) {
       germanCars.push(currentObj);
     }
@@ -289,13 +289,14 @@ const argTimesTwo = num => num * 2; // code here!
  *         (2) returns the updated value of the `odometer`.
  */
 function carMaker(odo) {
-  this.odometer = odo;
+  return {
+    odometer: odo,
 
-  this.drive = function(distance) {
-    return (this.odometer += distance);
+    drive: function(distance) {
+      return (this.odometer += distance);
+    }
   };
 }
-
 /// ////// END OF CHALLENGE /////////
 /// ////// END OF CHALLENGE /////////
 /// ////// END OF CHALLENGE /////////
